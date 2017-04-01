@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">noted</string>
+
+    <string name="new_button">New</string>
+    <string name="saved_button">Saved</string>
+    <string name="help_button">Help</string>
+
+
+</resources>

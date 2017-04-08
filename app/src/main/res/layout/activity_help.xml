@@ -4,10 +4,40 @@
     android:id="@+id/activity_help"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.student.noted.helpActivity">
 
+    <TextView
+        android:layout_width="350dp"
+        android:layout_height="30dp"
+        android:text="i   n   s   t   r   u   c   t   i   o   n   s"
+        android:textSize="25dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:id="@+id/textView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp" />
+
+    <TextView
+        android:layout_width="500dp"
+        android:layout_height="400dp"
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/textView"
+        android:id="@+id/textView2" />
+
+    <Button
+        android:layout_width="90dp"
+        android:layout_height="50dp"
+        android:background="@drawable/mybutton"
+        android:onClick="sendNew"
+        android:text="New"
+        android:textColor="@color/white"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/button4" />
 </RelativeLayout>

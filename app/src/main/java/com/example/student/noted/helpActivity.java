@@ -1,7 +1,9 @@
 package com.example.student.noted;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class helpActivity extends AppCompatActivity {
 
@@ -9,5 +11,11 @@ public class helpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+    }
+    public void sendNew(View view)
+    {
+        Intent intent = new Intent(helpActivity.this, newActivity.class);
+        startActivity(intent);
+
     }
 }

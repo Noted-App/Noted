@@ -6,4 +6,7 @@
     <color name="darkgreen">#67AB9F</color>
     <color name="white">#FFFFFF</color>
     <color name ="green">#D5E8D4</color>
+    <color name="gradient_start">#97D077</color>
+    <color name="gradient_end">#D5E8D4</color>
+
 </resources>

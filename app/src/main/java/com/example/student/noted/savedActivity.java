@@ -12,9 +12,9 @@ public class savedActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved);
     }
-    public void sendNew(View view)
+    public void sendTreble(View view)
     {
-        Intent intent = new Intent(savedActivity.this, newActivity.class);
+        Intent intent = new Intent(savedActivity.this, trebleActivity.class);
         startActivity(intent);
 
     }

@@ -17,7 +17,12 @@
         </activity>
         <activity android:name=".helpActivity" />
         <activity android:name=".savedActivity" />
-        <activity android:name=".newActivity"></activity>
+        <activity android:name=".trebleActivity"/>
+        <activity android:name=".newActivity"/>
+        <activity android:name=".bassnewActivity"/>
+        <activity android:name=".grandnewActivity"/>
     </application>
+
+
 
 </manifest>

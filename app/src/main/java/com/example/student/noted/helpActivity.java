@@ -12,9 +12,9 @@ public class helpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
     }
-    public void sendNew(View view)
+    public void sendTreble(View view)
     {
-        Intent intent = new Intent(helpActivity.this, newActivity.class);
+        Intent intent = new Intent(helpActivity.this, trebleActivity.class);
         startActivity(intent);
 
     }

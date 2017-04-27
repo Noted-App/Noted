@@ -3,7 +3,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,12 +29,21 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void sendNew(View view)
+   /*public void sendNew(View view)
+   {
+      Intent intent = new Intent(MainActivity.this, newActivity.class);
+        startActivity(intent);
+
+   }*/
+
+    public void sendTreble(View view)
     {
-        Intent intent = new Intent(MainActivity.this, newActivity.class);
+        Intent intent = new Intent(MainActivity.this, trebleActivity.class);
         startActivity(intent);
 
     }
+
+
 
 
 

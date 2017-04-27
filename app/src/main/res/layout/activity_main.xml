@@ -33,7 +33,7 @@
         android:layout_width="110dp"
         android:layout_height="56dp"
         android:id="@+id/button"
-        android:onClick="sendNew"
+        android:onClick="sendTreble"
         android:text="@string/new_button"
         android:textColor="@color/white"
         android:background="@drawable/mybutton"

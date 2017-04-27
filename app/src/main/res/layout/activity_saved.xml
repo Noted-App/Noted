@@ -29,7 +29,7 @@
         android:background="@drawable/mybutton"
         android:text="New"
         android:textColor="@color/white"
-        android:onClick="sendNew"
+        android:onClick="sendTreble"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/button5" />

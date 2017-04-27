@@ -22,19 +22,46 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="33dp" />
+    <ImageView
+        android:layout_width="700dp"
+        android:layout_height="210dp"
+        android:src="@drawable/instruct"
+        android:id="@+id/imageView"
+        android:layout_alignTop="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="78dp" />
+    <TextView
+    android:layout_width="850dp"
+    android:layout_height="950dp"
+    android:text="    1. Title- Double tap to title your masterpiece.\r\n
+    2. Note Bar- Displays all notes and dynamics available for use.\r\n
+    3. BPM Slider- Move the slider to increase or decrease the tempo of your masterpiece.\r\n
+    4. Staff WorkSpace- simply drag and drop notes and dynamics from the Note Bar to the staff workspace to compose your masterpiece.\r\n
+    5. Style change-Select from several musical styles from  a dropdown menu.\r\n
+    6. Instrument change-select what instrument you are writing for from a dropdown menu.\r\n"
+
+    android:textSize="17dp"
+    android:textColor="@color/white"
+    android:id= "@+id/textView3"
+    android:textStyle="bold"
+        android:layout_marginTop="11dp"
+        android:layout_below="@+id/imageView"
+        android:layout_alignStart="@+id/textView" />
+
 
     <TextView
         android:layout_width="500dp"
         android:layout_height="400dp"
-        android:layout_centerVertical="true"
+        android:id="@+id/textView2"
+        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textView"
-        android:id="@+id/textView2" />
+        android:layout_marginStart="12dp" />
 
     <Button
         android:layout_width="90dp"
         android:layout_height="50dp"
         android:background="@drawable/mybutton"
-        android:onClick="sendNew"
+        android:onClick="sendTreble"
         android:text="New"
         android:textColor="@color/white"
         android:layout_alignParentBottom="true"

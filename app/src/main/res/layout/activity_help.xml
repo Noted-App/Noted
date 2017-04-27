@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <!-- Here you put the rest of your current view-->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_help"
@@ -30,23 +37,25 @@
         android:layout_alignTop="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="78dp" />
+
+
     <TextView
     android:layout_width="850dp"
-    android:layout_height="950dp"
-    android:text="    1. Title- Double tap to title your masterpiece.\r\n
-    2. Note Bar- Displays all notes and dynamics available for use.\r\n
-    3. BPM Slider- Move the slider to increase or decrease the tempo of your masterpiece.\r\n
-    4. Staff WorkSpace- simply drag and drop notes and dynamics from the Note Bar to the staff workspace to compose your masterpiece.\r\n
-    5. Style change-Select from several musical styles from  a dropdown menu.\r\n
-    6. Instrument change-select what instrument you are writing for from a dropdown menu.\r\n"
+    android:layout_height="500dp"
+    android:text="    1. Title- Double tap to title your masterpiece.\r\n\n
+    2. Note Bar- Displays all notes and dynamics available for use.\r\n\n
+    3. BPM Slider- Move the slider to increase or decrease the tempo of your masterpiece.\r\n\n
+    4. Staff WorkSpace- simply drag and drop notes and dynamics from the Note Bar to the staff workspace to compose your masterpiece.\r\n\n
+    5. Style change-Select from several musical styles from  a dropdown menu.\r\n\n
+    6. Instrument change-select what instrument you are writing for from a dropdown menu.\r\n\n"
 
     android:textSize="17dp"
     android:textColor="@color/white"
     android:id= "@+id/textView3"
     android:textStyle="bold"
-        android:layout_marginTop="11dp"
         android:layout_below="@+id/imageView"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_alignEnd="@+id/textView"
+        android:layout_marginTop="12dp" />
 
 
     <TextView
@@ -56,6 +65,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/textView"
         android:layout_marginStart="12dp" />
+
+
 
     <Button
         android:layout_width="90dp"
@@ -68,3 +79,6 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/button4" />
 </RelativeLayout>
+
+
+</ScrollView>

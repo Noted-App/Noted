@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.content.pm.ActivityInfo;
 import android.graphics.Paint;
 import android.os.IBinder;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -28,11 +29,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.File;
 
 
 public class newActivity extends AppCompatActivity {
-
+    private final int PADDING_OFFSET = 32;
     private static SeekBar seekbar;
 
     private static TextView textViews;
@@ -47,6 +50,7 @@ public class newActivity extends AppCompatActivity {
     private boolean imageButton3Selected;
 
     private ImageButton activeButton;
+    private int currentDrawableId = 0;
 
 
     @Override
@@ -54,50 +58,85 @@ public class newActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treblenew);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        seekbarr();
+        seekbarr();}
 
+    public boolean onTouchEvent(MotionEvent event) {
+        // MotionEvent object holds X-Y values
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            String text = "You click at x = " + event.getX() + " and y = " + event.getY();
+            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
 
-        imageButton3 = (ImageButton) findViewById(R.id.imageButton3);
-        imageButton3Selected = false;
-        imageButton3.setOnTouchListener(new View.OnTouchListener()
-        {
-            @Override
-            public boolean onTouch(View v, MotionEvent event)
-            {
-                Toast.makeText(getApplicationContext(), "in the movement", Toast.LENGTH_SHORT).show();
-                if (event.getAction() == MotionEvent.ACTION_DOWN)
-                {
-                    imageButton3Selected = true;
-                    // add new ImageButton, save in activeButton
-                }//end if
+            RelativeLayout.LayoutParams noteLayout;
 
-                if (event.getAction() == MotionEvent.ACTION_UP)
-                {
-                    if (imageButton3Selected == true)
-                    {
-                        imageButton3Selected = false;
-                    }//end if
-                }//end if
-                else if (event.getAction() == MotionEvent.ACTION_MOVE)
-                {
-                    if (imageButton3Selected == true)
-                    {
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(300, 300);
-                        params.setMargins((int)event.getRawX() - 25, (int) event.getRawY() - 50, 0, 0);
-                        LinearLayout layout = (LinearLayout) findViewById(R.id.gllayout);
-                        layout.removeView(imageButton3);
-                        layout.addView(imageButton3, params);
-                    }//end if
-                }//end else
+//             decision logic to get note type, then set image size/ratio based on that type.
+//             So, quarternote is a 3.5:10 aspect ratio. the ImageView needs to have dimensions
+//             that honor this ratio. Once those values for x and y are determined, the LayoutParams
+//             can be assigned.  Then the offsets can be subtracted in the setX/setY. Maybe create
+//             class scoped variables to hold those measurement values.
 
-                return false;
-            }//end onTouch function
+            int touchX = (int) event.getRawX();
+            int touchY = (int) event.getRawY();
 
-        });
+            ImageView view = new ImageView(this);
+            view.setLayoutParams(new RelativeLayout.LayoutParams(27,75));
+            Glide.with(this).load(R.drawable.quarternote).into(view);
 
+            view.setX(touchX - view.getWidth() - PADDING_OFFSET);
+            view.setY(touchY - view.getHeight() - PADDING_OFFSET);
 
+            RelativeLayout staffLayout = (RelativeLayout)findViewById(R.id.activity_new);
+            staffLayout.addView(view, 0);
+        }
 
+        return super.onTouchEvent(event);
     }
+
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.imageButton1:
+                  currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton2:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton3:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton4:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton5:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton6:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton7:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton8:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton9:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton10:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton11:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            case R.id.imageButton12:
+                currentDrawableId = R.drawable.quarternote;
+                break;
+            default:
+                throw new RuntimeException("Unknow button ID");
+        }
+    }
+
+
+
+
 
 
     public void seekbarr() {

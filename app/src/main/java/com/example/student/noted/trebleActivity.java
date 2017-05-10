@@ -7,7 +7,7 @@ import android.content.pm.ActivityInfo;
 import android.view.View;
 
 
-public class trebleActivity extends AppCompatActivity {
+public class  trebleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -6,4 +6,21 @@
     <string name="help_button">Help</string>
 
 
-</resources>
+    <string-array name="instrument_array">
+        <item>Trumpet</item>
+        <item>Snare</item>
+        <item>Triangle</item>
+        <item>Maracas</item>
+        <item>Harmonica</item>
+    </string-array>
+
+    <string-array name="feel_array">
+        <item>Jazz</item>
+        <item>Majestic</item>
+        <item>Marching</item>
+        <item>soothing</item>
+        <item>lyrical</item>
+    </string-array>
+
+
+    </resources>

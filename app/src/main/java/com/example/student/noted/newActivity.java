@@ -1,70 +1,94 @@
 package com.example.student.noted;
 
 
-import android.app.Activity;
-import android.app.ProgressDialog;
-import android.content.ClipData;
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BlurMaskFilter;
-import android.graphics.Canvas;
-import android.graphics.Color;
 import android.content.pm.ActivityInfo;
-import android.graphics.Paint;
-import android.os.IBinder;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
-import java.io.File;
 
-
-public class newActivity extends AppCompatActivity {
+public class newActivity extends AppCompatActivity implements View.OnClickListener{
     private final int PADDING_OFFSET = 32;
     private static SeekBar seekbar;
 
     private static TextView textViews;
 
-    private Context mContext;
-    private Resources mResources;
-    private RelativeLayout mRelativeLayout;
-    private Button mButton;
-    private ImageView mImageView;
-
-    private ImageButton imageButton3;
-    private boolean imageButton3Selected;
-
-    private ImageButton activeButton;
     private int currentDrawableId = 0;
+    private int imageWidth;
+    private final int imageHeight = 75;
+    private final int repeatImageHeight = 150;
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.i("Instance state","onSaveInstanceState");
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        Log.i("Instance state","onRestoreInstanceState");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treblenew);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        seekbarr();}
+
+
+        seekbarr();
+
+        ImageButton note = (ImageButton) findViewById(R.id.quarternote);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.eighthnoterest);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.eighthnotes);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.dottedhalfnote2);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.halfnote);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.sixteenthnotes);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.wholenote);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.quarternoterest);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.halfnoterest);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.wholenoterest);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.creshendo);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.repeatsign);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.eighthnotes);
+        note.setOnClickListener(this);
+        note = (ImageButton) findViewById(R.id.eighthnotes);
+        note.setOnClickListener(this);
+
+    }
 
     public boolean onTouchEvent(MotionEvent event) {
+
+        // if no drawable selected yet - ignore (or do something else)
+
         // MotionEvent object holds X-Y values
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            String text = "You click at x = " + event.getX() + " and y = " + event.getY();
-            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
+//            String text = "Image ratio: " + imageWidth + "/" + imageHeight;
+//            Toast.makeText(this, text, Toast.LENGTH_LONG).show();
 
             RelativeLayout.LayoutParams noteLayout;
 
@@ -78,9 +102,13 @@ public class newActivity extends AppCompatActivity {
             int touchY = (int) event.getRawY();
 
             ImageView view = new ImageView(this);
-            view.setLayoutParams(new RelativeLayout.LayoutParams(27,75));
-            Glide.with(this).load(R.drawable.quarternote).into(view);
 
+            // if image is repeat bar, use different height
+            view.setLayoutParams(new RelativeLayout.LayoutParams(imageWidth, imageHeight));
+
+            Glide.with(this).load(currentDrawableId)/*.override(1000, 1000)*/.into(view);
+
+            // todo add more offset to bring note to bottom middle of click (instead of top-left)
             view.setX(touchX - view.getWidth() - PADDING_OFFSET);
             view.setY(touchY - view.getHeight() - PADDING_OFFSET);
 
@@ -90,47 +118,59 @@ public class newActivity extends AppCompatActivity {
 
         return super.onTouchEvent(event);
     }
-
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.imageButton1:
-                  currentDrawableId = R.drawable.quarternote;
-                break;
-            case R.id.imageButton2:
+            case R.id.quarternote:
                 currentDrawableId = R.drawable.quarternote;
+                imageWidth = (int)(.358 * imageHeight);
                 break;
-            case R.id.imageButton3:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.eighthnoterest:
+                currentDrawableId = R.drawable.eighthnoterest;
+                imageWidth = (int)(.418 * (imageHeight));
                 break;
-            case R.id.imageButton4:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.eighthnotes:
+                currentDrawableId = R.drawable.eighthnotes;
+                imageWidth = (int)(.989 * imageHeight);
                 break;
-            case R.id.imageButton5:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.dottedhalfnote2:
+                currentDrawableId = R.drawable.dottedhalfnote2;
+                imageWidth = (int)(.458 * imageHeight);
                 break;
-            case R.id.imageButton6:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.halfnote:
+                currentDrawableId = R.drawable.halfnote;
+                imageWidth = (int)(.413 * imageHeight);
                 break;
-            case R.id.imageButton7:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.sixteenthnotes:
+                currentDrawableId = R.drawable.sixteenthnotes;
+                imageWidth = (int)(.529 * (imageHeight * 2));
                 break;
-            case R.id.imageButton8:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.wholenote:
+                currentDrawableId = R.drawable.wholenote;
+                imageWidth = (int)(.673 * imageHeight);
                 break;
-            case R.id.imageButton9:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.quarternoterest:
+                currentDrawableId = R.drawable.quarternoterest;
+                imageWidth = (int)(.349 * imageHeight);
                 break;
-            case R.id.imageButton10:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.halfnoterest:
+                currentDrawableId = R.drawable.halfnoterest;
+                imageWidth = (int)(.330 * imageHeight);
                 break;
-            case R.id.imageButton11:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.wholenoterest:
+                currentDrawableId = R.drawable.wholenoterest;
+                imageWidth = (int)(.434 * imageHeight);
                 break;
-            case R.id.imageButton12:
-                currentDrawableId = R.drawable.quarternote;
+            case R.id.creshendo:
+                currentDrawableId = R.drawable.creshendo;
+                imageWidth = (int)(.771 * imageHeight);
+                break;
+            case R.id.repeatsign:
+                currentDrawableId = R.drawable.repeatsign;
+                imageWidth = (int)(.654 * repeatImageHeight);
                 break;
             default:
-                throw new RuntimeException("Unknow button ID");
+                throw new RuntimeException("Unknown button ID");
         }
     }
 
@@ -154,11 +194,13 @@ public class newActivity extends AppCompatActivity {
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             int progress_value;
+            int stepsize = 10;
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progress_value = progress;
-                textViews.setText("BMP : " + progress);
+                progress_value = ((int)Math.round(progress/stepsize)) *stepsize;
+                seekBar.setProgress(progress);
+                textViews.setText("BMP : " + progress_value);
 
 
             }

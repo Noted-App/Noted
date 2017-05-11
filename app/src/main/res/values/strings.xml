@@ -22,5 +22,13 @@
         <item>lyrical</item>
     </string-array>
 
+    <string-array name="bassinstrument_array">
+        <item>Bass Guitar</item>
+        <item>Clasical Bass</item>
+        <item>Bass Horn</item>
+        <item>Washtub Bass</item>
+        <item>Bass drum</item>
+    </string-array>
+
 
     </resources>

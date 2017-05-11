@@ -156,12 +156,6 @@
                 android:padding="10dp"
                 android:background="@drawable/creshendo"/>
 
-            <!--<ImageButton-->
-            <!--android:layout_width="39dp"-->
-            <!--android:layout_height="44dp"-->
-            <!--android:layout_margin="10sp"-->
-            <!--android:padding="10dp"-->
-            <!--android:background="@drawable/dottedquarternote"/>-->
 
             <ImageButton
                 android:id="@+id/repeatsign"
@@ -173,7 +167,6 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-
 
 
     <Spinner
@@ -235,7 +228,6 @@
         android:layout_marginEnd="16dp"
         android:layout_below="@+id/horizontalScrollView"
         android:layout_alignEnd="@+id/imageView" />
-
 
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

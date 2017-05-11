@@ -31,4 +31,13 @@
     </string-array>
 
 
+    <string-array name="grandinstrument_array">
+        <item>Piano</item>
+        <item>Mirimba</item>
+        <item>Harp</item>
+        <item>Organ</item>
+        <item>vibraphone</item>
+    </string-array>
+
+
     </resources>

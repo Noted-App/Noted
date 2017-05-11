@@ -1,12 +1,19 @@
 package com.example.student.noted;
 
 
+import android.content.Context;
+import android.content.ContextWrapper;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -16,8 +23,14 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Date;
 
-public class bassnewActivity extends AppCompatActivity implements View.OnClickListener{
+
+public class bassnewActivity extends AppCompatActivity implements View.OnClickListener {
     private final int PADDING_OFFSET = 32;
     private static SeekBar seekbar;
 
@@ -28,17 +41,20 @@ public class bassnewActivity extends AppCompatActivity implements View.OnClickLi
     private final int imageHeight = 75;
     private final int repeatImageHeight = 150;
 
+    Bitmap mbitmap;
+    Button captureScreenShot;
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        Log.i("Instance state","onSaveInstanceState");
+        Log.i("Instance state", "onSaveInstanceState");
 
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        Log.i("Instance state","onRestoreInstanceState");
+        Log.i("Instance state", "onRestoreInstanceState");
     }
 
     @Override
@@ -46,6 +62,8 @@ public class bassnewActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bassnew);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        captureScreenShot = (Button) findViewById(R.id.button2);
 
 
         seekbarr();
@@ -80,6 +98,35 @@ public class bassnewActivity extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    public void screenShot(View view) {
+        mbitmap = getBitmapOFRootView(captureScreenShot);
+        createImage(mbitmap);
+
+    }
+
+    public Bitmap getBitmapOFRootView(View v) {
+        View rootview = v.getRootView();
+        rootview.setDrawingCacheEnabled(true);
+        Bitmap bitmap1 = rootview.getDrawingCache();
+        return bitmap1;
+    }
+
+
+    public void createImage(Bitmap bmp) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bmp.compress(Bitmap.CompressFormat.JPEG, 40, bytes);
+        File file = new File(Environment.getExternalStorageDirectory() +
+                "/capturedscreen.jpg");
+        try {
+            file.createNewFile();
+            FileOutputStream outputStream = new FileOutputStream(file);
+            outputStream.write(bytes.toByteArray());
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public boolean onTouchEvent(MotionEvent event) {
 
         // if no drawable selected yet - ignore (or do something else)
@@ -111,71 +158,68 @@ public class bassnewActivity extends AppCompatActivity implements View.OnClickLi
             view.setX(touchX - view.getWidth() - PADDING_OFFSET);
             view.setY(touchY - view.getHeight() - PADDING_OFFSET);
 
-            RelativeLayout staffLayout = (RelativeLayout)findViewById(R.id.activity_bassnew);
+            RelativeLayout staffLayout = (RelativeLayout) findViewById(R.id.activity_bassnew);
             staffLayout.addView(view, 0);
         }
 
         return super.onTouchEvent(event);
     }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.quarternote:
                 currentDrawableId = R.drawable.quarternote;
-                imageWidth = (int)(.358 * imageHeight);
+                imageWidth = (int) (.358 * imageHeight);
                 break;
             case R.id.eighthnoterest:
                 currentDrawableId = R.drawable.eighthnoterest;
-                imageWidth = (int)(.418 * (imageHeight));
+                imageWidth = (int) (.418 * (imageHeight));
                 break;
             case R.id.eighthnotes:
                 currentDrawableId = R.drawable.eighthnotes;
-                imageWidth = (int)(.989 * imageHeight);
+                imageWidth = (int) (.989 * imageHeight);
                 break;
             case R.id.dottedhalfnote2:
                 currentDrawableId = R.drawable.dottedhalfnote2;
-                imageWidth = (int)(.458 * imageHeight);
+                imageWidth = (int) (.458 * imageHeight);
                 break;
             case R.id.halfnote:
                 currentDrawableId = R.drawable.halfnote;
-                imageWidth = (int)(.413 * imageHeight);
+                imageWidth = (int) (.413 * imageHeight);
                 break;
             case R.id.sixteenthnotes:
                 currentDrawableId = R.drawable.sixteenthnotes;
-                imageWidth = (int)(.529 * (imageHeight * 2));
+                imageWidth = (int) (.529 * (imageHeight * 2));
                 break;
             case R.id.wholenote:
                 currentDrawableId = R.drawable.wholenote;
-                imageWidth = (int)(.673 * imageHeight);
+                imageWidth = (int) (.673 * imageHeight);
                 break;
             case R.id.quarternoterest:
                 currentDrawableId = R.drawable.quarternoterest;
-                imageWidth = (int)(.349 * imageHeight);
+                imageWidth = (int) (.349 * imageHeight);
                 break;
             case R.id.halfnoterest:
                 currentDrawableId = R.drawable.halfnoterest;
-                imageWidth = (int)(.330 * imageHeight);
+                imageWidth = (int) (.330 * imageHeight);
                 break;
             case R.id.wholenoterest:
                 currentDrawableId = R.drawable.wholenoterest;
-                imageWidth = (int)(.434 * imageHeight);
+                imageWidth = (int) (.434 * imageHeight);
                 break;
             case R.id.creshendo:
                 currentDrawableId = R.drawable.creshendo;
-                imageWidth = (int)(.771 * imageHeight);
+                imageWidth = (int) (.771 * imageHeight);
                 break;
             case R.id.repeatsign:
                 currentDrawableId = R.drawable.repeatsign;
-                imageWidth = (int)(.654 * repeatImageHeight);
+                imageWidth = (int) (.654 * repeatImageHeight);
                 break;
             default:
                 throw new RuntimeException("Unknown button ID");
         }
     }
-
-
-
-
 
 
     public void seekbarr() {
@@ -187,9 +231,6 @@ public class bassnewActivity extends AppCompatActivity implements View.OnClickLi
         textViews.setText("BMP : " + seekbar.getProgress());
 
 
-
-
-
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             int progress_value;
@@ -197,7 +238,7 @@ public class bassnewActivity extends AppCompatActivity implements View.OnClickLi
 
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progress_value = ((int)Math.round(progress/stepsize)) *stepsize;
+                progress_value = ((int) Math.round(progress / stepsize)) * stepsize;
                 seekBar.setProgress(progress);
                 textViews.setText("BMP : " + progress_value);
 
@@ -220,9 +261,7 @@ public class bassnewActivity extends AppCompatActivity implements View.OnClickLi
         });
     }
 
-
 }
-
 
 
 

@@ -229,43 +229,7 @@
 
 
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="wrap_content"
-        android:layout_height="170dp"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            android:layout_toStartOf="@+id/simpleEditText"
-            android:layout_marginEnd="24dp">
 
-            <View
-                android:id="@+id/line6"
-                android:layout_width="3dp"
-                android:layout_height="1dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="50sp"
-                android:background="#000000" />
-
-            <View
-                android:id="@+id/line7"
-                android:layout_width="3dp"
-                android:layout_height="136dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="50sp"
-                android:background="#000000"
-                android:layout_alignBottom="@+id/line8"
-                android:layout_alignParentStart="true" />
-
-            <View
-                android:id="@+id/line8"
-                android:layout_width="3dp"
-                android:layout_height="100dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="50sp"
-                android:background="#000000" />
-
-
-
-        </RelativeLayout>
 
 
 

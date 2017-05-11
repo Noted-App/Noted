@@ -280,23 +280,19 @@
                 android:layout_marginTop="20sp"
                 android:background="#000000" />
 
-
-
-
         </LinearLayout>
 
-
-
-
-
-
+    <Button
+        android:layout_width="95dp"
+        android:layout_height="50dp"
+        android:text="SAVE"
+        android:onClick="screenShot"
+        android:background="@drawable/mybutton"
+        android:textColor="@color/white"
+        android:id="@+id/button2"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>
 
 
-
-
-
-
-
-    <!--</HorizontalScrollView>-->
